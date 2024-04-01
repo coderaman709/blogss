@@ -89,9 +89,9 @@ def home():
         username=session['username']
         post = Users.query.filter_by(username=username).first()
         theme = Appear.query.filter_by(username=username).first()
-        return render_template("home.html", username=session['username'], posts=posts,  theme=theme, post=post, post3=post3, post2=post2, post1=post1)
+        return render_template("index.html", username=session['username'], posts=posts,  theme=theme, post=post, post3=post3, post2=post2, post1=post1)
     
-    return render_template("home.html", posts=posts,  post3=post3, post2=post2, post1=post1)
+    return render_template("index.html", posts=posts,  post3=post3, post2=post2, post1=post1)
     
 
 @app.route("/blog/<string:link>", methods=['GET'])
