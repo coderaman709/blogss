@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <nav id="st-nav">
+        <a href="/profile"><li>Profile</li></a>
+        <a href="/my-blogs"><li>My Blogs</li></a>
+        <a href="/user/{{info.email}}"><button>Change Password</button></a>
+        <a href="/saved"><li>Saved</li></a>
+        <a href="/following"><li>Following</li></a>
+        <a href="/about"><li>About</li></a>
+        <a href="/services"><li>Services</li></a>
+        <a href="/terms-policies"><li>Terms & Policies</li></a>
+    </nav>
+</body>
+</html>

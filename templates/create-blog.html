@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog</title>
+</head>
+<body>
+    <form action="/create-blog" method="post">
+        <input type="file" name="img">
+        <input type="text" name="title">
+        <input type="text" name="category">
+        <textarea name="blog" cols="30" rows="10"></textarea>
+
+        <button type="submit">Next</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h2>{{ post.username }}</h2>
+    <p>{{ post.date }}</p>
+    <img src="/static/image/{{post.thumbnail}}">
+    <h1>{{ post.title }}</h1>
+    <h1>{{ post.category }}</h1>
+    <p>{{ post.blog }}</p>
+</body>
+</html>

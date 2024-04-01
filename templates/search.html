@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogzen: Searched For:-{{ search.search }}</title>
+</head>
+<body>
+    <p>{{ search.search }}</p>
+
+    {% for post in user %}
+        <li><a href="/{{post.username}}">{{ post.username }}</a></li>
+    {% endfor %}
+    {% for post in userBlog %}
+        <li><a href="/blog/{{ post.link }}">{{ post.title }}</a></li>
+    {% endfor %}
+    {% for post in url %}
+        <li><a href="/blog/{{ post.link }}">{{ post.title }}</a></li>
+    {% endfor %}
+    {% for post in title %}
+        <li><a href="/blog/{{ post.link }}">{{ post.title }}</a></li>
+    {% endfor %}
+    {% for post in category %}
+        <li><a href="/blog/{{ post.link }}">{{ post.title }}</a></li>
+    {% endfor %}
+</body>
+</html>

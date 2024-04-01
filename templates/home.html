@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog Website</title>
+</head>
+<script>
+
+function profile(){
+    const profile = document.getElementById("cont-1");
+    const body = document.getElementById("body");
+    const prImg = document.getElementById("profile-img");
+
+    profile.style.display = "flex";
+    profile.style.height = "400px";
+    profile.style.width = "270px";
+    body.style.height = "100%";
+    body.style.width = "100%";
+    prImg.style.width = "60px";
+    prImg.style.right = "250px";
+    prImg.style.top = "60px";
+}
+function bodyClick(){
+    const close = document.getElementById("cont-1");
+    const body = document.getElementById("body");
+    const prImg = document.getElementById("profile-img");
+
+    close.style.display = "none";
+    close.style.height = "0px";
+    close.style.width = "0px";
+    body.style.height = "0";
+    body.style.width = "0";
+    prImg.style.width = "34px";
+    prImg.style.right = "70px";
+    prImg.style.top = "100px";
+}
+
+function cate(){
+    const div = document.getElementById("cate");
+    const more = document.getElementById("img-3");
+    div.style.opacity = "1";
+    div.style.height = "230px";
+    div.style.width = "160px";
+
+    more.style.transform = "rotate(360deg)";
+
+}
+function cls(){
+    const div = document.getElementById("cate");
+    const more = document.getElementById("img-3");
+    div.style.opacity = "0";
+    div.style.height = "0px";
+    div.style.width = "0px";
+
+    more.style.transform = "rotate(180deg)";
+
+}
+</script>
+<body>
+    {% if username %}
+    <div id="body" onpointerdown="bodyClick()" onmousewheel="bodyClick()"></div>
+    <img src="/static/image/{{theme.avatar}}" id="profile-img" onclick="profile()">
+
+        <div id="cont-1">
+            <div id="dec-1"></div>
+            <h2 id="username">{{ username }}</h2>
+            <i>Edit</i>
+            <a href="/settings"><h2>My Blogs</h2></a>
+            <a href="/user"><h3>profile image</h3></a>
+            <div id="dec-2">
+            <a href="/logout"><p>Logout</p></a>
+            </div>
+        </div>
+        <a href="/create-blog"><button class="create-blog">Post Blog</button></a>
+    {% else %}
+        <a href="/signup"><button class="btn-1">Register</button></a>
+    {% endif %}
+    
+    <div class="container-1">
+        <header class="header">
+            <div class="dec-1"></div>
+            
+            <form method="post">
+                <input type="text" name="query" id="search-box">
+                <button type="submit" id="srch">Search</button>
+            </form>
+
+        </header>
+        <nav class="navigation">
+            <li>Home</li>
+            <ul onmouseenter="cate()">Categories <img src="{{ url_for('static', filename='image/img-2.png') }}" id="img-3"></ul>
+            <div id="cate" onmouseleave="cls()">
+                <p>Music</p>
+                <p>Gaming</p>
+                <p>Management</p>
+                <p>Health</p>
+                <p>Food</p>
+                <p>Lifestyle</p>
+            </div>
+            <li>Blog</li>
+            <li>About</li>
+            <li>Contact</li>
+        </nav>
+    </div>
+    <div class="container-2">
+            <div>
+                <img src="/static/image/{{post1.thumbnail}}">
+                <p>{{ post1.username }}<li>{{ post1.date }}</li></p>
+                <button>{{ post1.category }}</button>
+                <a href="/blog/{{ post1.link }}">
+                <textarea cols="30" rows="10" readonly>{{ post1.title }}</textarea></a>
+            </div>
+    </div>
+    <div class="container-3">
+        <div>
+            <img src="/static/image/{{post2.thumbnail}}">
+            <p>{{ post2.username }}<li>{{ post2.date }}</li></p>
+            <button>{{ post2.category }}</button>
+            <a href="/blog/{{ post2.link }}">
+            <textarea cols="30" rows="10" readonly>{{ post2.title }}</textarea></a>
+        </div>
+    </div>
+    <div class="container-4">
+        <div>
+            <img src="/static/image/{{post3.thumbnail}}">
+            <p>{{ post3.username }}<li>{{ post3.date }}</li></p>
+            <!-- <button>{{ post3.category }}</button> -->
+            <a href="/blog/{{ post3.link }}">
+            <textarea cols="30" rows="10" readonly>{{ post3.title }}</textarea></a>
+        </div>
+    </div>
+
+    {% for post in posts %}
+    <a href="/blog/{{ post.link }}"><li>{{ post.title }}</li></a>
+    {% endfor %}
+
+</body>
+</html>
